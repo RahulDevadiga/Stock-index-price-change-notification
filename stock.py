@@ -6,6 +6,12 @@ import json
 from os import path
 from plyer import notification
 import time
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--refreshRate", help="Enter the rate at which you want the data to be refreshed (time in seconds)",type = int, default = 0)
+args = parser.parse_args()
+
 
 def sendNotification(title, msg):
 	notification.notify(
@@ -16,7 +22,8 @@ def sendNotification(title, msg):
 
 
 url = "https://www.moneycontrol.com/stocksmarketsindia/"
-
+if args.refreshRate == 0:
+	print("refreshRate was not specified, default value 0 was given") 
 while True:
 	r = requests.get(url) 
 	soup = BeautifulSoup(r.content , 'html5lib')
@@ -50,5 +57,5 @@ while True:
 	with open("stocks.json", "w") as f:
 		f.write(currentDataJson)
 		
-	#time.sleep(600) #uncomment this if data is to be updated every 10 minutes
+	time.sleep(args.refreshRate) 
 	
