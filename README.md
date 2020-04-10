@@ -3,15 +3,15 @@ Live increase or decrease in the stock index prices are notified
 
 # Installation instructions:
 
-                                pip install beautifulsoup4
-                                pip install requests
-                                pip install pandas
-                                pip install os
-                                pip install plyer
+    pip install beautifulsoup
+    pip install requests
+    pip install pandas
+    pip install os
+    pip install plyer
 
 # To run python file:
 
-                           python stock.py --refreshRate [time in seconds]   
+    python stock.py --refreshRate [time in seconds]   
 
 # Description:
 
